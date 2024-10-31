@@ -9,7 +9,8 @@ task:
     - apk update
     - apk upgrade
     - apk add curl docker git grep
-    - dockerd & > /dev/null 2>&1
+    - dockerd & # > /dev/null 2>&1
+    - sleep 5
 
   Build_script:
     - git clone https://github.com/aldrin1127/freebsd-docker-builder.git
