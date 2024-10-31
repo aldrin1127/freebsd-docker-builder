@@ -7,9 +7,9 @@ task:
 
   Pre-Build_script:
     - |
-      sed -i /usr/local/etc/pkg.conf \
-          -e 's/#DEFAULT_ALWAYS_YES = false;/DEFAULT_ALWAYS_YES = true;/'
-          -e 's/#ASSUME_ALWAYS_YES = false;/ASSUME_ALWAYS_YES = true;/'
+      sed -i -e 's/#DEFAULT_ALWAYS_YES = false/DEFAULT_ALWAYS_YES = true/' \
+             -e 's/#ASSUME_ALWAYS_YES = false/ASSUME_ALWAYS_YES = true/' \
+             /usr/local/etc/pkg.conf
     - sudo pkg update
     - sudo pkg upgrade
     - >-
