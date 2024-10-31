@@ -5,9 +5,6 @@ on:
     branches:
       - main
 
-env:
-  FREEBSD_VERSION: '15.0'
-
 jobs:
   release:
     runs-on: ubuntu-24.04
@@ -18,3 +15,6 @@ jobs:
         run: |
           ./fetch.sh
           docker build . -t freebsd-docker-builder
+          docker run --rm -i freebsd-docker-builder bash <<SH
+          echo hi
+          SH
