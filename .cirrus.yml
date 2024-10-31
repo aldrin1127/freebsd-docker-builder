@@ -6,7 +6,10 @@ task:
     memory: 32G
 
   Pre-Build_script:
-    - cat /usr/local/etc/pkg.conf
+    - |
+      sed -i /usr/local/etc/pkg.conf \
+          -e 's/#DEFAULT_ALWAYS_YES = false;/DEFAULT_ALWAYS_YES = true;/'
+          -e 's/#ASSUME_ALWAYS_YES = false;/ASSUME_ALWAYS_YES = true;/'
     - sudo pkg update
     - sudo pkg upgrade
     - >-
