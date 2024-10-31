@@ -6,7 +6,8 @@ task:
     memory: 32G
 
   Pre-Build_script:
-    - sed -i -e 's|#DEFAULT_ALWAYS_YES = false|DEFAULT_ALWAYS_YES = true|' -e 's|#ASSUME_ALWAYS_YES = false|ASSUME_ALWAYS_YES = true|' /usr/local/etc/pkg.conf
+    - sed -i 's|#DEFAULT_ALWAYS_YES = false|DEFAULT_ALWAYS_YES = true|' /usr/local/etc/pkg.conf
+    - sed -i 's|#ASSUME_ALWAYS_YES = false|ASSUME_ALWAYS_YES = true|' /usr/local/etc/pkg.conf
     - sudo pkg update
     - sudo pkg upgrade
     - sudo pkg install automake autoconf binutils gcc gmp mpc mpfr isl libtool intltool
