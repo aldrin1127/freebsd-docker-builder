@@ -8,7 +8,7 @@ task:
   Pre-Build_script:
     - apk update
     - apk upgrade
-    - apk add docker git
+    - apk add curl docker git
     - dockerd & > /dev/null 2>&1
 
   Build_script:
