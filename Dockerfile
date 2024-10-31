@@ -2,6 +2,8 @@ FROM alpine as prechroot
 
 ENV FREEBSD_VERSION=15.0
 
+RUN apk add tar
+
 RUN mkdir /freebsd/ \
   && wget -q "https://download.freebsd.org/snapshots/amd64/${FREEBSD_VERSION}-CURRENT/base.txz" \
   && tar -Jxf base.txz --remove-files \
