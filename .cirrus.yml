@@ -6,8 +6,9 @@ task:
     memory: 32G
 
   Pre-Build_script:
-    - sudo pkg -y update
-    - sudo pkg -y upgrade
+    - cat /usr/local/etc/pkg.conf
+    - sudo pkg update
+    - sudo pkg upgrade
     - >-
-      sudo pkg -y install automake autoconf binutils
+      sudo pkg install automake autoconf binutils
       gcc gmp mpc mpfr isl libtool intltool
