@@ -1,12 +1,6 @@
-FROM alpine as prechroot
-
-RUN mkdir -p /freebsd/sys
-
-FROM scratch as chroot
-
-COPY --from=prechroot /freebsd/sys /sys
+FROM scratch
 
 ADD base.txz /
 ADD lib32.txz /
 
-RUN echo hi
+CMD ["/bin/sh"]

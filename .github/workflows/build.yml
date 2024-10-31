@@ -16,6 +16,5 @@ jobs:
         uses: actions/checkout@main
       - name: Build
         run: |
-          wget -q "https://download.freebsd.org/snapshots/amd64/${{ env.FREEBSD_VERSION }}-CURRENT/base.txz"
-          wget -q "https://download.freebsd.org/snapshots/amd64/${{ env.FREEBSD_VERSION }}-CURRENT/lib32.txz"
-          docker build .
+          ./fetch.sh
+          docker build . -t freebsd-docker-builder
