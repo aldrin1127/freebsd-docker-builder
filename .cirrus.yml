@@ -2,8 +2,8 @@ task:
   timeout_in: 120m
   container:
     image: alpine:edge
-    cpu: 16
-    memory: 64G
+    cpu: 8
+    memory: 32G
 
   Pre-Build_script:
     - apk update
