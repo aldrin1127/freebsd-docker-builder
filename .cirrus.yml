@@ -3,8 +3,8 @@ task:
   resources:
     cpu: 8
     memory: 32G
-  freebsd-instance:
-    image-family: freebsd-15
+  freebsd_instance:
+    image_family: freebsd-15
   env:
     ASSUME_ALWAYS_YES: yes
 
