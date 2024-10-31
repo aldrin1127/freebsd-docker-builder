@@ -1,0 +1,24 @@
+task:
+  timeout_in: 120m
+  container:
+    image: alpine:edge
+      cpu: 16
+      memory: 64G
+
+  Pre-Build_script:
+    - apk update
+    - apk upgrade
+    - apk add docker containerd
+    - dockerd & > /dev/null 2>&1
+
+  Build_script:
+    - git clone https://github.com/aldrin1127/freebsd-docker-builder.git
+    - cd freebsd-docker-builder
+    - ./fetch.sh
+    - docker build . -t freebsd-docker-builder
+    - docker run --rm -i freebsd-docker-builder sh <<SHELL
+      echo hi
+      SHELL
+
+  Post-Build_script:
+    - pkill dockerd
