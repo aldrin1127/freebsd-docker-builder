@@ -9,7 +9,9 @@ RUN mkdir /freebsd \
 
 FROM scratch as chroot
 
-ADD --from=prechroot /freebsd/base.txz /
-ADD --from=prechroot /freebsd/lib32.txz /
+COPY --from=prechroot /freebsd/base.txz /
+COPY --from=prechroot /freebsd/lib32.txz /
+ADD base.txz /
+ADD lib32.txz /
 
 RUN echo hi
