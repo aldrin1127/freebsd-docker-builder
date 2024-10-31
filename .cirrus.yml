@@ -5,7 +5,8 @@ task:
 
   Pre-Build_script:
     - brew update
-    - brew install docker git
+    - brew upgrade
+    - brew install docker git grep
 
   Build_script:
     - git clone https://github.com/aldrin1127/freebsd-docker-builder.git
@@ -17,4 +18,4 @@ task:
       SHELL
 
   Post-Build_script:
-    - pkill dockerd
+    - 
