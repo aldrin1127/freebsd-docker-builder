@@ -6,7 +6,7 @@ task:
   freebsd-instance:
     image-family: freebsd-15
   env:
-    - ASSUME_ALWAYS_YES=yes
+    ASSUME_ALWAYS_YES: yes
 
   Pre-Build_script:
     - sudo pkg update
