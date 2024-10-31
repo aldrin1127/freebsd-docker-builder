@@ -1,16 +1,13 @@
 task:
   timeout_in: 120m
-  resources:
-    cpu: 8
-    memory: 32G
   freebsd_instance:
     image_family: freebsd-15-0-snap
-  env:
-    ASSUME_ALWAYS_YES: yes
+    cpu: 8
+    memory: 32G
 
   Pre-Build_script:
-    - sudo pkg update
-    - sudo pkg upgrade
+    - sudo pkg -y update
+    - sudo pkg -y upgrade
     - >-
-      sudo pkg install -y automake autoconf binutils
+      sudo pkg -y install automake autoconf binutils
       gcc gmp mpc mpfr isl libtool intltool
