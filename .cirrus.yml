@@ -1,21 +1,16 @@
 task:
   timeout_in: 120m
-  macos_instance:
-    image: ghcr.io/cirruslabs/macos-runner:sonoma
+  resources:
+    cpu: 8
+    memory: 32G
+  freebsd-instance:
+    image-family: freebsd-15
+  env:
+    - ASSUME_ALWAYS_YES=yes
 
   Pre-Build_script:
-    - brew update
-    - brew upgrade
-    - brew install docker git grep
-
-  Build_script:
-    - git clone https://github.com/aldrin1127/freebsd-docker-builder.git
-    - cd freebsd-docker-builder
-    - ./fetch.sh
-    - docker build . -t freebsd-docker-builder
-    - docker run --rm -i -v "$(pwd):/work" freebsd-docker-builder sh <<SHELL
-      echo hi
-      SHELL
-
-  Post-Build_script:
-    - 
+    - sudo pkg update
+    - sudo pkg upgrade
+    - >-
+      sudo pkg install -y automake autoconf binutils
+      gcc gmp mpc mpfr isl libtool intltool
