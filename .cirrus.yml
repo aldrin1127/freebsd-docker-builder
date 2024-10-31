@@ -8,7 +8,7 @@ task:
   Pre-Build_script:
     - apk update
     - apk upgrade
-    - apk add docker containerd
+    - apk add docker git
     - dockerd & > /dev/null 2>&1
 
   Build_script:
@@ -16,7 +16,7 @@ task:
     - cd freebsd-docker-builder
     - ./fetch.sh
     - docker build . -t freebsd-docker-builder
-    - docker run --rm -i freebsd-docker-builder sh <<SHELL
+    - docker run --rm -i -v "$(pwd):/work" freebsd-docker-builder sh <<SHELL
       echo hi
       SHELL
 
